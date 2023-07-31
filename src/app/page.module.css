@@ -1,3 +1,46 @@
+/* .layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh; 
+}  */
+
+.link {
+  color: blue;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+/* .header {
+  color: #f8b70e;
+  font-weight: bold;
+  text-align: center;
+} */
+
+/* .topMenu {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+
+.topMenuLinks {
+  font-weight: bold;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin: 0 10px;
+} */
+
+/* .bottomMenu {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+} */
+
+.article {
+  background: #fffbe4;
+  color: black;
+}
+
+/* Generated */
 .main {
   display: flex;
   flex-direction: column;
@@ -97,7 +140,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
