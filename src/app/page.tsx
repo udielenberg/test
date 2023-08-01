@@ -1,14 +1,11 @@
-// @ts-nocheck
-import Link from 'next/link'
-import styles from './page.module.css'
+"use client";
 
-const PageLink = ({href, text}) => {
-  return <Link className={styles.link} {...{href}}>{text}</Link>
-}
+const routeMap = {
+    "/": "main",
+    "/yoga": "yoga",
+    "/camino-rojo": "camino-rojo",
+};
 
 export default function Page() {
-  return <div>
-    <PageLink href="/yoga" text="Yoga"/>
-    <PageLink href="/camino-rojo" text="Camino Rojo"/>
-  </div>
+    return <div>children</div>;
 }

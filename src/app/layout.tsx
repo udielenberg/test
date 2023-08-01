@@ -3,9 +3,15 @@ import "normalize.css/normalize.css";
 
 import type { Metadata } from "next";
 import { Miriam_Libre } from "next/font/google";
-import { ResponsiveLayout } from "@/layouts/responsive-layout";
-import { loadFile } from "@/async/loadFile";
+
+import YogaButton from "../../public/images/yoga.png";
+import CaminoRojoButton from "../../public/images/camino-rojo.jpeg";
+import Image from "next/image";
+import { DesktopBottomMenu } from "@/components/bottom-menu";
+import { PageLink } from "@/components/page-link";
+import Link from "next/link";
 import { use } from "react";
+import { buildArticleMenu, buildMainArticleMenu } from "@/utils/menus";
 
 const inter = Miriam_Libre({
     weight: ["400", "700"],
@@ -22,12 +28,90 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const article: string = use(loadFile());
+    const mainArticleLinks = use(buildMainArticleMenu());
+    const articleLinks = use(buildArticleMenu("yoga"));
+
+    console.log("mainArticleLinks:", mainArticleLinks);
+    console.log("articleLinks:", articleLinks);
 
     return (
         <html lang="en">
             <body className={inter.className}>
-                <ResponsiveLayout article={article} />
+                <nav className="before-scroll">
+                    <header>
+                        <h1>אש תמיד</h1>
+                        <nav className="header-links">
+                            {mainArticleLinks.map(({ title, href }) => (
+                                <PageLink href="/#content" text={title} />
+                            ))}
+                            {/* <PageLink href={`/#content`} text="אחד" />
+                            <PageLink href={`/#content`} text="שתיים" />
+                            <PageLink href={`/#content`} text="שלוש" />
+                            <PageLink href={`/#content`} text="ארבע" />
+                            <PageLink href={`/#content`} text="חמש" last /> */}
+                        </nav>
+                    </header>
+
+                    <article className="announcements">
+                        <marquee truespeed={600}>הודעה לקהל הרחב</marquee>
+                    </article>
+
+                    <nav className="navigator">
+                        <div className="navigator-button">
+                            <Image
+                                width={100}
+                                height={100}
+                                objectFit="cover"
+                                sizes="100vw"
+                                layout="responsive"
+                                src={YogaButton}
+                                alt="yoga section"
+                            />
+                            <h2>יוגה</h2>
+                        </div>
+                        <div className="navigator-button">
+                            <Image
+                                width={100}
+                                height={100}
+                                objectFit="cover"
+                                sizes="100vw"
+                                layout="responsive"
+                                src={CaminoRojoButton}
+                                alt="Camino Rojo"
+                            />
+                            <h2>הדרך האדומה</h2>
+                        </div>
+                    </nav>
+                </nav>
+
+                <hr />
+
+                <main className="under-scroll">
+                    <nav className="main-nav">
+                        <div className="main-nav-button">הדרך האדומה</div>
+                        <div className="main-nav-button">יוגה</div>
+                    </nav>
+                    <nav className="secondary-nav">
+                        {articleLinks.map(({ title, href }) => (
+                            <div className="secondary-nav-button">
+                                <Link href={href}>{title}</Link>
+                            </div>
+                        ))}
+                        {/* <div className="secondary-nav-button">
+                            <Link href={"/yoga/01-yoga-in-manof"}>יוגה1</Link>
+                        </div>
+                        <div className="secondary-nav-button">לינק 2</div>
+                        <div className="secondary-nav-button">לינק 3</div>
+                        <div className="secondary-nav-button">לינק 4</div>
+                        <div className="secondary-nav-button">לינק 5</div> */}
+                    </nav>
+                    <section className="content" id="content">
+                        {children}
+                    </section>
+                </main>
+                <footer>
+                    <DesktopBottomMenu />
+                </footer>
             </body>
         </html>
     );

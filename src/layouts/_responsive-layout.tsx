@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 "use client";
 
 import YogaButton from "../../public/images/yoga.png";
@@ -6,17 +8,15 @@ import Image from "next/image";
 import { DesktopBottomMenu } from "@/components/bottom-menu";
 import { PageLink } from "@/components/page-link";
 import { styled } from "styled-components";
-import { usePathname } from "next/navigation";
-
-import { RenderArticle } from "@/server-components/render-article";
+import { RenderArticle } from "@/components/render-article";
 
 interface Props {
     article: string;
+    domain: "yoga" | "camino-rojo" | "main";
 }
 
 export const ResponsiveLayout = (props: Props) => {
     const { article } = props;
-    const pathname = usePathname();
 
     return (
         <Wrapper>
@@ -24,15 +24,15 @@ export const ResponsiveLayout = (props: Props) => {
                 <header>
                     <h1>אש תמיד</h1>
                     <nav className="header-links">
-                        <PageLink href={`${pathname}#content`} text="אחד" />
-                        <PageLink href={`${pathname}#content`} text="שתיים" />
-                        <PageLink href={`${pathname}#content`} text="שלוש" />
-                        <PageLink href={`${pathname}#content`} text="ארבע" />
+                        <PageLink href={`/#content`} text="אחד" />
                         <PageLink
-                            href={`${pathname}#content`}
-                            text="חמש"
-                            last
+                            scroll={false}
+                            href={`/#content`}
+                            text="שתיים"
                         />
+                        <PageLink href={`/#content`} text="שלוש" />
+                        <PageLink href={`/#content`} text="ארבע" />
+                        <PageLink href={`/#content`} text="חמש" last />
                     </nav>
                 </header>
 
@@ -67,6 +67,7 @@ export const ResponsiveLayout = (props: Props) => {
                     <div className="secondary-nav-button">לינק 5</div>
                 </nav>
                 <section className="content" id="content">
+                    {children}
                     <RenderArticle article={article} />
                 </section>
             </main>
@@ -202,10 +203,6 @@ const ButtonImage = styled(Image).attrs({
     width: 100,
     height: 100,
     objectFit: "cover",
-    // fill: true,
     sizes: "100vw",
     layout: "responsive",
-})`
-    /* width: 100%;
-    height: auto; */
-`;
+})``;

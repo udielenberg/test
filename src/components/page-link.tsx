@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import React from "react";
 import { styled } from "styled-components";
 
 interface PageLinkProps {
@@ -8,15 +11,22 @@ interface PageLinkProps {
 }
 
 export const PageLink = ({ href, text, last }: PageLinkProps) => {
+    const handleClick = () => {
+        window.scrollTo({
+            behavior: "smooth",
+            top: document.getElementById("content")?.offsetTop! - 60,
+        });
+    };
+
     if (last) {
         return (
-            <div>
+            <div onClick={handleClick}>
                 |<StyledLink {...{ href }}>{text}</StyledLink>|
             </div>
         );
     }
     return (
-        <div>
+        <div onClick={handleClick}>
             <StyledLink {...{ href }}>{text}</StyledLink>|
         </div>
     );

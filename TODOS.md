@@ -1,4 +1,6 @@
--   make linked click scroll to content and update the preview
+-   function to read all md files
+-   Find out how to load a page(route) in a div in the main file
+-   make linked click scroll to content and update the preview - (https://codesandbox.io/s/react-scroll-9zig5?file=/src/index.js:639-645)
 -   support MD files
     -   install plugins to enable more markdown features (remark-gfm)
     -   transform articles to MD
@@ -7,8 +9,8 @@
     -   Each article should have a Head tag with metadata!
     -   Regular Markdown files with react-markdown & override styles (font-family)
 -   create a theme file and put all colors in it.
--   create content (render .MD files)
 -   create editor for articles (https://www.youtube.com/watch?v=x5JdT5KJBzw)
+-   ~~create content (render .MD files)~~
 
 references:
 
