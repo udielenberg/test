@@ -31,9 +31,6 @@ export default function RootLayout({
     const mainArticleLinks = use(buildMainArticleMenu());
     const articleLinks = use(buildArticleMenu("yoga"));
 
-    console.log("mainArticleLinks:", mainArticleLinks);
-    console.log("articleLinks:", articleLinks);
-
     return (
         <html lang="en">
             <body className={inter.className}>
@@ -41,14 +38,11 @@ export default function RootLayout({
                     <header>
                         <h1>אש תמיד</h1>
                         <nav className="header-links">
-                            {mainArticleLinks.map(({ title, href }) => (
-                                <PageLink href="/#content" text={title} />
-                            ))}
-                            {/* <PageLink href={`/#content`} text="אחד" />
-                            <PageLink href={`/#content`} text="שתיים" />
-                            <PageLink href={`/#content`} text="שלוש" />
-                            <PageLink href={`/#content`} text="ארבע" />
-                            <PageLink href={`/#content`} text="חמש" last /> */}
+                            {mainArticleLinks
+                                .reverse()
+                                .map(({ title, href }) => (
+                                    <PageLink href={href} text={title} />
+                                ))}
                         </nav>
                     </header>
 
@@ -57,34 +51,36 @@ export default function RootLayout({
                     </article>
 
                     <nav className="navigator">
-                        <div className="navigator-button">
-                            <Image
-                                width={100}
-                                height={100}
-                                objectFit="cover"
-                                sizes="100vw"
-                                layout="responsive"
-                                src={YogaButton}
-                                alt="yoga section"
-                            />
-                            <h2>יוגה</h2>
-                        </div>
-                        <div className="navigator-button">
-                            <Image
-                                width={100}
-                                height={100}
-                                objectFit="cover"
-                                sizes="100vw"
-                                layout="responsive"
-                                src={CaminoRojoButton}
-                                alt="Camino Rojo"
-                            />
-                            <h2>הדרך האדומה</h2>
-                        </div>
+                        <Link href="/yoga">
+                            <div className="navigator-button">
+                                <Image
+                                    width={100}
+                                    height={100}
+                                    objectFit="cover"
+                                    sizes="100vw"
+                                    layout="responsive"
+                                    src={YogaButton}
+                                    alt="yoga section"
+                                />
+                                <h2>יוגה</h2>
+                            </div>
+                        </Link>
+                        <Link href="/camino-rojo">
+                            <div className="navigator-button">
+                                <Image
+                                    width={100}
+                                    height={100}
+                                    objectFit="cover"
+                                    sizes="100vw"
+                                    layout="responsive"
+                                    src={CaminoRojoButton}
+                                    alt="Camino Rojo"
+                                />
+                                <h2>הדרך האדומה</h2>
+                            </div>
+                        </Link>
                     </nav>
                 </nav>
-
-                <hr />
 
                 <main className="under-scroll">
                     <nav className="main-nav">
@@ -92,18 +88,11 @@ export default function RootLayout({
                         <div className="main-nav-button">יוגה</div>
                     </nav>
                     <nav className="secondary-nav">
-                        {articleLinks.map(({ title, href }) => (
+                        {articleLinks.reverse().map(({ title, href }) => (
                             <div className="secondary-nav-button">
                                 <Link href={href}>{title}</Link>
                             </div>
                         ))}
-                        {/* <div className="secondary-nav-button">
-                            <Link href={"/yoga/01-yoga-in-manof"}>יוגה1</Link>
-                        </div>
-                        <div className="secondary-nav-button">לינק 2</div>
-                        <div className="secondary-nav-button">לינק 3</div>
-                        <div className="secondary-nav-button">לינק 4</div>
-                        <div className="secondary-nav-button">לינק 5</div> */}
                     </nav>
                     <section className="content" id="content">
                         {children}

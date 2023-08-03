@@ -6,6 +6,6 @@ interface PageWithParamsProps {
     params: { id: string };
 }
 export default function Page({ params }: PageWithParamsProps) {
-    const { article, metadata } = use(loadArticle("yoga", params.id));
+    const { article, metadata } = use(loadArticle("yoga", "01-yoga-in-manof"));
     return <RenderArticle {...{ article, metadata }} />;
 }

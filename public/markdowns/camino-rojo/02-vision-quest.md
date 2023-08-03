@@ -1,10 +1,10 @@
 ---
-title: ראשי דוגמא 2
+title: מסע חזון
 date: "16/6/2023"
-subject: main
+subject: camino-rojo
 ---
 
-# דוגמא 2 - MAIN
+# דוגמא 1
 
 שלום לכולם זה דוגמא נהדרת
 

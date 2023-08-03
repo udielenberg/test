@@ -1,10 +1,10 @@
 ---
-title: דוגמא 1
+title: סרטונים
 date: "16/6/2023"
-subject: camino-rojo
+subject: yoga
 ---
 
-# דוגמא 1
+# דוגמא 1 - יוגה
 
 שלום לכולם זה דוגמא נהדרת
 
