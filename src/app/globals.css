@@ -97,6 +97,7 @@ body {
 body {
     color: rgb(var(--foreground-rgb));
     background: #960b1d;
+    color: white;
     margin: 0;
     /* height: 100%; */
     padding: 0 20%;
@@ -248,9 +249,4 @@ a {
     }
 }
 
-@media ((max-width: 1024px)) {
-    body {
-        background: blue;
-        padding: 0 10px;
-    }
-}
+

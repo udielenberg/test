@@ -21,13 +21,13 @@ export const PageLink = ({ href, text, last }: PageLinkProps) => {
     if (last) {
         return (
             <div onClick={handleClick}>
-                |<StyledLink {...{ href }}>{text}</StyledLink>|
+                <StyledLink {...{ href }}>{text}</StyledLink>
             </div>
         );
     }
     return (
         <div onClick={handleClick}>
-            <StyledLink {...{ href }}>{text}</StyledLink>|
+           | <StyledLink {...{ href }}>{text}</StyledLink>
         </div>
     );
 };
@@ -37,4 +37,5 @@ const StyledLink = styled(Link).attrs({ scroll: true })`
     font-size: 0.8rem;
     display: inline-block;
     margin: 0 10px;
+    color: white;
 `;
