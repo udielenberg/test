@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "export",
+    // output: "export",
     webpack: false,
-    images: { unoptimized: true, allowFutureImage: true },
+    // images: { unoptimized: true, allowFutureImage: true },
+    experimental: {
+        mdxRs: true,
+    },
     // webpack: (config, { isServer }) => {
     //     if (!isServer) {
     //         config.resolve.fallback.fs = false;
@@ -19,4 +22,7 @@ const nextConfig = {
     //   },
 };
 
-module.exports = nextConfig;
+const withMDX = require("@next/mdx")();
+
+module.exports = withMDX(nextConfig);
+// module.exports = nextConfig;

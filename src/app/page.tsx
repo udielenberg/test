@@ -7,5 +7,5 @@ const routeMap = {
 };
 
 export default function Page() {
-    return <div>children</div>;
+    return <div></div>;
 }

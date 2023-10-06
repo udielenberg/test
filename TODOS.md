@@ -1,3 +1,20 @@
+## Lorena's todos
+
+-   Adjust font family
+-   Add placeholder image to the top section
+-   Move title to be bext to logo
+-   Repoistion top menu
+-   Marquee
+    -   Reposition marquee to the end of the first fold
+    -   Adjsut: background opacity 90% | 100% width | smaller height
+-   Add logo
+-   Change main buttons to be just a text with button according to the design
+-   Adjust second menu according to the design
+
+-   Remove metadata from markdown preview
+
+---
+
 -   function to read all md files
 -   Find out how to load a page(route) in a div in the main file
 -   make linked click scroll to content and update the preview - (https://codesandbox.io/s/react-scroll-9zig5?file=/src/index.js:639-645)

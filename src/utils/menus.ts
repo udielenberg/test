@@ -7,7 +7,7 @@ import {
 } from "./files";
 
 export const buildArticleMenu = async (subject: Subject) => {
-    return extractArticleTitleForLink(subject);
+    return extractArticleTitleForLink(subject === "" ? "main" : subject);
 };
 
 export const buildMainArticleMenu = async () => {

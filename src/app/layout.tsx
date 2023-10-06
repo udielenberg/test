@@ -1,8 +1,7 @@
 import "./globals.css";
 import "normalize.css/normalize.css";
-
 import type { Metadata } from "next";
-import { Miriam_Libre } from "next/font/google";
+import { Miriam_Libre, Noto_Sans_Hebrew } from "next/font/google";
 
 import YogaButton from "../../public/images/yoga.png";
 import CaminoRojoButton from "../../public/images/camino-rojo.jpeg";
@@ -12,8 +11,9 @@ import { PageLink } from "@/components/page-link";
 import Link from "next/link";
 import { use } from "react";
 import { buildArticleMenu, buildMainArticleMenu } from "@/utils/menus";
+import { ContentNavigation } from "@/components/content-nav";
 
-const inter = Miriam_Libre({
+const inter = Noto_Sans_Hebrew({
     weight: ["400", "700"],
     subsets: ["hebrew"],
 });
@@ -29,7 +29,6 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     const mainArticleLinks = use(buildMainArticleMenu());
-    const articleLinks = use(buildArticleMenu("yoga"));
 
     return (
         <html lang="en">
@@ -83,17 +82,7 @@ export default function RootLayout({
                 </nav>
 
                 <main className="under-scroll">
-                    <nav className="main-nav">
-                        <div className="main-nav-button">הדרך האדומה</div>
-                        <div className="main-nav-button">יוגה</div>
-                    </nav>
-                    <nav className="secondary-nav">
-                        {articleLinks.reverse().map(({ title, href }) => (
-                            <div className="secondary-nav-button">
-                                <Link href={href}>{title}</Link>
-                            </div>
-                        ))}
-                    </nav>
+                    <ContentNavigation />
                     <section className="content" id="content">
                         {children}
                     </section>

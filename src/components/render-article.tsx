@@ -2,6 +2,7 @@
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import HelloWorld from "../app/content/hello.mdx";
 
 type Metadata = Record<string, string>;
 
@@ -59,7 +60,7 @@ const ArticleMetadata = ({ metadata }: ArticleMetadataProps) => {
     return (
         <div style={{ marginBottom: 20 }}>
             {Object.entries(metadata).map(([title, value]) => (
-                <div>
+                <div key={title}>
                     <strong>{title}</strong>: <em>{value}</em>
                 </div>
             ))}
@@ -68,16 +69,18 @@ const ArticleMetadata = ({ metadata }: ArticleMetadataProps) => {
 };
 
 export const RenderArticle = ({ article, metadata }: Props) => {
+    console.log("article:", article);
     return (
-        <div>
-            <ArticleMetadata metadata={metadata} />
+        <>
+            {/* <ArticleMetadata metadata={metadata} /> */}
             <ReactMarkdown
                 skipHtml={false}
                 components={components}
                 remarkPlugins={[remarkGfm]}
+                className="markdown prose prose-slate"
             >
                 {article}
             </ReactMarkdown>
-        </div>
+        </>
     );
 };
